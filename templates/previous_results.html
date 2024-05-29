@@ -1,0 +1,188 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <h1 class="text-center mt-5">Önceki Sonuçlarım</h1>
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+          <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th scope="col">Sonuç Tarihi</th>
+                          <th scope="col">Yaş</th>
+                          <th scope="col">Cinsiyet</th>
+                          <th scope="col">BMI</th>
+                          <th scope="col">BP</th>
+                          <th scope="col">TC</th>
+                          <th scope="col">LDL</th>
+                          <th scope="col">HDL</th>
+                          <th scope="col">TCH</th>
+                          <th scope="col">LTG</th>
+                          <th scope="col">Glukoz</th>
+                          <th scope="col">Sonuç</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for prediction in predictions %}
+                      <tr>
+                          <td>{{ prediction.created_at }}</td>
+                          <td>{{ prediction.age }}</td>
+                          <td>{% if prediction.sex == 1 %}Erkek{% else %}Kadın{% endif %}</td>
+                          <td>{{ prediction.bmi }}</td>
+                          <td>{{ prediction.bp }}</td>
+                          <td>{{ prediction.tc }}</td>
+                          <td>{{ prediction.ldl }}</td>
+                          <td>{{ prediction.hdl }}</td>
+                          <td>{{ prediction.tch }}</td>
+                          <td>{{ prediction.ltg }}</td>
+                          <td>{{ prediction.glucose }}</td>
+                          <td>{{ prediction.result }}</td>
+                      </tr>
+                      {% empty %}
+                      <tr>
+                          <td colspan="12" class="text-center">Henüz hiç sonuç yok.</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+   
+
+
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>BIPOLARIBO</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>BIPOLARIBO</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
+

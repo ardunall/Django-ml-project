@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10" style="margin-top: 150px;">
+      <div class="table-responsive">
+        <h3 class="text-center">Tahlil Sonuçlarınız</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Yaş</th>
+              <th>Cinsiyet</th>
+              <th>BMI</th>
+              <th>BP</th>
+              <th>TC</th>
+              <th>LDL</th>
+              <th>HDL</th>
+              <th>TCH</th>
+              <th>LTG</th>
+              <th>Glukoz</th>
+              <th>Tarih</th>
+              <th style="color: cyan;">Tahmin Sonucu</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in prediction %}
+            <tr>
+              <td>{{ x.age }}</td>
+              <td>{{ x.sex }}</td>
+              <td>{{ x.bmi }}</td>
+              <td>{{ x.bp }}</td>
+              <td>{{ x.tc }}</td>
+              <td>{{ x.ldl }}</td>
+              <td>{{ x.hdl }}</td>
+              <td>{{ x.tch }}</td>
+              <td>{{ x.ltg }}</td>
+              <td>{{ x.glucose }}</td>
+              <td>{{ x.created_at }}</td>
+              <td>
+                {% if x.result == "No Diabetes" %}
+                <span style="color: rgb(20, 236, 20);">{{ x.result }}</span>
+                {% else %}
+                <span style="color: red;">{{ x.result }}</span> <b>Doktora Görünün</b>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary"><a class="download-link text-white" href="{% url 'download' %}">Sonucu İndir</a></button>
+      </div>
+      {% if has_positive_prediction %}
+      <div class="mt-4 text-center">
+        <p style="color: red;">{{ positive_message }}</p>
+        <p><a href="{{ appointment_link }}">Randevu almak için tıklayın</a></p>
+        <p><a href="{{ blog_link }}">Blogumuzu okumak için tıklayın</a></p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+   
+
+
+
